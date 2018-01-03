@@ -1,5 +1,4 @@
-# abaco-d2s
-
+# abaco-d2s-agave
 A [Docker container](https://hub.docker.com/r/jturcino/abaco-d2s-agave/) for registering a [docker2singularity](https://github.com/TACC/docker2singularity) actor with [Abaco](https://github.com/TACC/abaco) that stores the produced [Singularity](http://singularity.lbl.gov/) images on a specified [Agave](https://agaveapi.co/) filesystem.
 
 **If you do not have access to an Agave storage system, but you do have access to Docker, please use the [abaco-d2s-generic](https://github.com/jturcino/abaco-d2s-generic) repo instead.**
@@ -31,12 +30,13 @@ $ outdir="/projects/abaco/d2s"
 ### 2. Create the actor
 Move into a directory that has access to the Abaco CLI. Use `abaco create` to create a privileged actor, adding the `outdir` and `system` as environmental variables. Once run, make note of the actor ID (`ZVO8GLWGzPgbK`)
 ```
-$ ./abaco create -p -u -e "{\"system\": \"$system\", \"outdir\": \"$outdir\"}" -n d2s-agave-tutorial jturcino/abaco-d2s-agave:latest
+$ ./abaco create -p -u -e "{\"system\": \"$system\", \"outdir\": \"$outdir\"}" \
+  -n d2s-agave-tutorial jturcino/abaco-d2s-agave:latest
 d2s-agave-tutorial    ZVO8GLWGzPgbK
 ```
 
 ### 3. Check the actor's status
-Use `abaco list` to check if the actor has `READY` status. If the status is stil SUBMITTED, wait a few moments before checking again.
+Use `abaco list` to check if the actor has `READY` status. If the status is stil `SUBMITTED`, wait a few moments before checking again.
 ```
 $ ./abaco list
 d2s-agave-tutorial    ZVO8GLWGzPgbK    READY
